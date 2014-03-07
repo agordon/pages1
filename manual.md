@@ -74,4 +74,5 @@ Unsorted input must be sorted:
 
 More details and examples here
 
+See more examples in the [Examples Section](./examples.html).
 
