@@ -1,83 +1,47 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+---
+layout: default
+title: pages1
+---
 
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+<h3><i>calc</i> is command-line calculator</h3>
 
-    <title>Pages1 by agordon</title>
-  </head>
+<p>calc is command-line program which performs simple calculation (e.g. count, sum, min, max, mean, stdev, string coalescing) on input files. A simple example: sum up the values in the first column of any input:</p>
 
-  <body>
-    <header>
-      <div class="inner">
-        <h1>Pages1</h1>
-        <h2>Trying GitHub Pages</h2>
-        <a href="https://github.com/agordon/pages1" class="button"><small>View project on</small>GitHub</a>
-      </div>
-    </header>
-
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
+<pre><code># sum the values in the first column
+$ seq 10 | calc sum 1
+55
 </code></pre>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+<p>calc can sort and group the input, based on user specification.<br/>
+Example: Find the average score in statistics course of college students, grouped by their college major.
+The input file has three fields: <b>Name</b>,<b>Major</b>,<b>Score</b>.
 
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
+<pre><code># The input file has three columns, and a header line
+$ cat scores.txt
+Name        Major            Score
+Bryan       Arts             68
+Isaiah      Arts             80
+Gabriel     Health-Medicine  100
+Tysza       Business         92
+Zackery     Engineering      54
+...
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+# Sort the input file and group by the second column (Major),
+# then calculate the mean score (third column) and sample-standard-deviation.
+$ calc --sort --headers --group 2 mean 3 sstdev 3 < scores.txt
+GroupBy(Major)     mean(Score)   sstdev(Score)
+Arts               68.9474       10.4215
+Business           87.3636       5.18214
+Engineering        66.5385       19.8814
+Health-Medicine    90.6154       9.22441
+Life-Sciences      55.3333       20.606
+Social-Sciences    60.2667       17.2273
+</code></pre>
 
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
+<p>calc is perfect for interactive exploration of textual data, and for automating tasks in shell scripts. See the <a href="/examples.html">Examples</a> section for real-world use-cases in system-administration, bioinformatics, shell scripting, and more.</p>
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+<p>calc is closely modelled after existing unix utilities (e.g. sort, join, awk, sed) and intergrates well with these programs. See the <a href="/manual.html">manual</a> for more details and examples.</p>
 
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+<p>calc is written in portable C, compiles on many platforms (Linux, Mac-OS-X, FreeBSD), and includes a comprehensive test-suit to ensure correctness and robustness. A single pre-compiled binary can be downloaded and used on most modern systems without the need to compile from source - See the <a href="/download.html">Download</a> section for more details.</p>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-        </section>
-
-        <aside id="sidebar">
-          <a href="https://github.com/agordon/pages1/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/agordon/pages1/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
-
-          <p class="repo-owner"><a href="https://github.com/agordon/pages1"></a> is maintained by <a href="https://github.com/agordon">agordon</a>.</p>
-
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
-    </div>
-
-  
-  </body>
-</html>
+<h3>About</h3>
