@@ -5,63 +5,67 @@ title: pages1 - download
 
 ### Version
 
+The latest released version is {{ site.calc_version }} .
+
+The latest development version is available at <{{site.calc_git_url}}>.
+
 ### Download pre-compiled binaries
 
 Pre-compiled binaries are available for the following platforms:
 
-* [Linux](https://github.com/agordon/pages1/releases/XXX)
-* [Mac OS X](https://igthub.com/agordon/pages1/releases/XXX)
-* [FreeBSD 10](https://github.com/agordon/pages1/releases/XXX)
+* [Linux]({{site.calc_bin_linux_url}})
+* [Mac OS X]({{site.calc_bin_macosx_url}})
+* [FreeBSD 10]({{site.calc_bin_freebsd_url}})
 
 ### HomeBrew/LinuxBrew
 
 On Mac OS X with [HomeBrew](http://brew.sh/) or on Linux with [LinuxBrew](https://github.com/Homebrew/linuxbrew/), install `calc` by running the following:
 
 ```sh
-$ brew install agordon/gordon/calc
+brew install agordon/gordon/calc
 ```
 
 ### Compile from source code
 
-To compile from source code, download [calc-X.Y.Z.tar.gz](https://github.com/agordon/pages1/releases/XXX) file, and run the following commands:
+To compile from source code, download [{{site.calc_src_tarball_filename}}]({{site.calc_src_tarball_url}})
 
 ```sh
-$ wget https://github.com/agordon/pages1/releases/calc-X.Y.Z.tar.gz
-$ tar -xzf calc-X.Y.Z.tar.gz
-$ cd calc-X.Y.Z
-$ ./configure
-$ make
-$ make check
-$ sudo make install
+wget {{site.calc_src_tarball_url}}
+tar -xzf {{site.calc_src_tarball_filename}}
+cd calc-{{site.calc_version}}
+./configure
+make
+make check
+sudo make install
 ```
 
 ### Compile from GIT repository
 
-To compile from the [GIT repository](https://github.com/agordon/pages1), run the following commands:
+To compile from the [GIT repository]({{site.calc_git_url}}), run the following commands:
 
 ```sh
-$ git clone https://github.com/agordon/pages1.git
-$ cd calc
-$ ./bootstrap
-$ ./configure
-$ make
-$ make check
-$ sudo make install
+git clone {{site.calc_git_url}}
+cd calc
+./bootstrap
+./configure
+make
+make check
+sudo make install
 ```
 
 ### Prerequisites
 
 To compile from the GIT repository, the following programs are needed: automake,autoconf,gcc/clang,gperf,help2man.
 
-On Debian/Ubuntu systems, use the following command:
+On **Debian/Ubuntu** systems, use the following command:
 
 ```sh
-$ sudo apt-get install help2man gperf
+sudo apt-get install build-essential help2man gperf autoconf automake gettext
 ```
 
-On Mac OS X with XCode and HomeBrew, use the following commands:
+On **Mac OS X** with XCode and HomeBrew, use the following commands:
 
 ```sh
-$ brew install help2manhelp2man valgrind gperf
+brew install help2man
 ```
 
