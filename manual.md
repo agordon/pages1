@@ -31,9 +31,9 @@ Numeric operations:
   svar       print the sample variance
 
 String operations:
-  unique     print comma-separated sorted list of unique values
-  uniquenc   Same as above, while ignoring upper/lower case letters.
-  collapse   print comma-separed list of all input values
+  unique      print comma-separated sorted list of unique values
+  collapse    print comma-separed list of all input values
+  countunique print number of unique values
 
 
 General options:
@@ -43,6 +43,8 @@ General options:
   --header-in               First input line is column headers
   --header-out              Print column headers as first line
   -H, --headers             Same as '--header-in --header-out'
+  -i, --ignore-case         Ignore upper/lower case when comparing text
+                            This affects grouping, and string operations
   -s, --sort                Sort the input before grouping
                             Removes the need to manually pipe the input through 'sort'
   -t, --field-separator=X   use X instead of whitespace for field delimiter
