@@ -1,6 +1,6 @@
 ---
 layout: default
-title: pages1 - Manual
+title: Calc - Manual
 ---
 
 ### Calc Usage

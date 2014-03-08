@@ -1,6 +1,6 @@
 ---
 layout: default
-title: pages1
+title: Calc
 ---
 
 ### calc is command-line calculator

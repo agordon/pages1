@@ -1,6 +1,6 @@
 ---
 layout: default
-title: pages1 - examples
+title: Calc - examples
 ---
 
 ### Using calc
