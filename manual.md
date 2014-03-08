@@ -9,7 +9,7 @@ Run `calc --help` to see the help screen:
 
 ```sh
 $ calc --help
-Usage: ./calc [OPTION] op col [op col ...]
+Usage: calc [OPTION] op col [op col ...]
 Performs numeric/string operations on input from stdin.
 
 'op' is the operation to perform on field 'col'.
@@ -39,9 +39,7 @@ String operations:
 General options:
   -f, --full                Print entire input line before op results
                             (default: print only the groupped keys)
-  -g, --groups=X[,Y,Z,]     Group via fields X,[Y,X]
-                            This is a short-cut for --key:
-                            '-g5,6' is equivalent to '-k5,5 -k6,6'
+  -g, --group=X[,Y,Z]       Group via fields X,[Y,Z]
   --header-in               First input line is column headers
   --header-out              Print column headers as first line
   -H, --headers             Same as '--header-in --header-out'
@@ -56,23 +54,42 @@ General options:
 
 Examples:
 
-Print the mean and the median of values from column 1:
+Print the sum and the mean of values from column 1:
 
-  $ seq 10 | ./calc mean 1 median 1
+  $ seq 10 | calc sum 1 mean 1
+  55  5.5
 
 Group input based on field 1, and sum values (per group) on field 2:
 
-  $ printf "%s %d\n" A 10 A 5 B 9 | ./calc -g1 sum 2
+  $ cat example.txt
+  A  10
+  A  5
+  B  9
+  B  11
+  $ calc -g 1 sum 2 < example.txt
+  A  15
+  B  20
 
-Unsorted input must be sorted:
+Unsorted input must be sorted (with '-s'):
 
-  $ cat INPUT.TXT | ./calc -s -g1 mean 2
+  $ cat example.txt
+  A  10
+  C  4
+  B  9
+  C  1
+  A  5
+  B  11
+  $ calc -s -g1 sum 2 < example.txt
+  A 15
+  B 20
+  C 5
 
-  Which is equivalent to:
-  $ cat INPUT.TXT | sort -k1,1 | ./calc -g1 mean 2
+Which is equivalent to:
+  $ cat example.txt | sort -k1,1 | calc -g 1 sum 2
+
 ```
 
-More details and examples here
+### Real-world examples
 
 See more examples in the [Examples Section](./examples.html).
 
